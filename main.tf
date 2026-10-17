@@ -14,6 +14,7 @@ variable "components"{
 }
 
 resource "aws_route53_record" "recondinfo" {
+    count = 5
     zone_id = "Z06825681EGC79XN2OESW"
     name = "${var.components[count.index]}-dev"
     type = "A"
