@@ -19,10 +19,10 @@ variable "components"{
     }
 }
 
-resource "aws_route53_record" "recondinfo" {
+resource "aws_route53_record" "recordinfo" {
     for_each = var.components
     zone_id = "Z06825681EGC79XN2OESW"
-    name = "${var.components[count.index]}-dev"
+    name = "${each.key}-dev"
     type = "A"
     ttl = 30
     records = [aws_instance.instance[each.key].private_ip]
